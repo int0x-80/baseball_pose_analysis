@@ -1,0 +1,130 @@
+.trend-container {
+  min-height: 100vh;
+  background: #f5f7fa;
+  padding: 24rpx;
+  padding-bottom: 40rpx;
+}
+
+.summary-row {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 24rpx;
+}
+
+.summary-card {
+  flex: 1;
+  background: white;
+  border-radius: 16rpx;
+  padding: 24rpx 16rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.summary-card.highlight {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.summary-card.highlight .summary-label,
+.summary-card.highlight .summary-value,
+.summary-card.highlight .summary-unit {
+  color: white;
+}
+
+.summary-label {
+  font-size: 22rpx;
+  color: #999;
+  display: block;
+}
+
+.summary-value {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin: 6rpx 0 2rpx;
+}
+
+.summary-unit {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.chart-section {
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16rpx;
+  display: block;
+}
+
+.trend-chart {
+  width: 100%;
+  height: 400rpx;
+}
+
+.legend-row {
+  display: flex;
+  justify-content: center;
+  gap: 32rpx;
+  margin-top: 16rpx;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: 22rpx;
+  color: #666;
+}
+
+.legend-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+}
+
+/* 数据表格 */
+.data-section {
+  padding: 24rpx;
+}
+
+.data-row {
+  display: flex;
+  padding: 14rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.data-row:last-child {
+  border-bottom: none;
+}
+
+.data-header {
+  font-weight: 600;
+  color: #999;
+  font-size: 22rpx;
+  border-bottom: 2rpx solid #e8e8e8;
+}
+
+.data-col {
+  font-size: 24rpx;
+  color: #333;
+}
+
+.date-col {
+  flex: 1.2;
+}
+
+.speed-col {
+  flex: 1;
+  text-align: center;
+}
+
+.speed-col.bat {
+  color: #667eea;
+  font-weight: 500;
+}

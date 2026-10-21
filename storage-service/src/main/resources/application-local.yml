@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: storage-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: public
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: public
+        file-extension: yml
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+# MinIO 配置
+minio:
+  endpoint: http://localhost:9000
+  access-key: minioadmin
+  secret-key: minioadmin
+  bucket: baseball-videos
+
+server:
+  port: 8004
+
+logging:
+  level:
+    com.baseball: DEBUG

@@ -1,0 +1,77 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 82.157.140.50:8848
+        namespace: public
+      config:
+        server-addr: 82.157.140.50:8848
+        namespace: public
+        file-extension: yml
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        # 用户服务路由
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=2
+
+        # 视频分析服务路由
+        - id: video-analysis-service
+          uri: lb://video-analysis-service
+          predicates:
+            - Path=/api/analysis/**
+          filters:
+            - StripPrefix=2
+
+        # 球星卡服务路由
+        - id: card-service
+          uri: lb://card-service
+          predicates:
+            - Path=/api/card/**
+          filters:
+            - StripPrefix=2
+
+        # 存储服务路由
+        - id: storage-service
+          uri: lb://storage-service
+          predicates:
+            - Path=/api/storage/**
+          filters:
+            - StripPrefix=2
+      # 全局CORS配置
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
+            maxAge: 3600
+
+server:
+  port: 8001
+
+# JWT 配置（与 user-service 保持一致）
+jwt:
+  secret: baseball_pose_analysis_secret_key_2026_very_long_secret
+  expiration: 86400000  # 24小时（毫秒）
+
+# 日志配置
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.web: INFO

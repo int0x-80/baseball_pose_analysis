@@ -1,0 +1,82 @@
+.daily-container {
+  min-height: 100vh;
+  background: #f5f7fa;
+  padding: 24rpx;
+  padding-bottom: 60rpx;
+}
+
+.date-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding: 0 4rpx;
+}
+
+.date-text {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.count-text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.record-card {
+  padding: 24rpx;
+}
+
+.record-top {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.record-type {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.record-time {
+  font-size: 22rpx;
+  color: #999;
+  margin-left: auto;
+}
+
+.record-body {
+  margin-bottom: 12rpx;
+}
+
+.stat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.chip {
+  background: #f0f2ff;
+  color: #667eea;
+  font-size: 22rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 8rpx;
+}
+
+.record-bottom {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.detail-link {
+  font-size: 24rpx;
+  color: #667eea;
+}

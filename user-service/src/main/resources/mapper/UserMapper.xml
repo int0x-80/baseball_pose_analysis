@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baseball.user.mapper.UserMapper">
+    
+    <!-- 增加分析次数 -->
+    <update id="incrementAnalysisCount">
+        UPDATE user 
+        SET total_analysis_count = total_analysis_count + 1,
+            update_time = NOW()
+        WHERE id = #{userId}
+    </update>
+    
+</mapper>

@@ -1,0 +1,72 @@
+<view class="trend-container">
+  <!-- 加载状态 -->
+  <view class="loading-state" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:elif="{{records.length === 0}}">
+    <text class="empty-icon">📊</text>
+    <text class="empty-text">暂无趋势数据</text>
+    <text class="empty-hint">完成视频分析后这里会显示速度趋势</text>
+  </view>
+
+  <!-- 有数据 -->
+  <block wx:else>
+    <!-- 汇总卡片 -->
+    <view class="summary-row">
+      <view class="summary-card">
+        <text class="summary-label">最近</text>
+        <text class="summary-value">{{latestSpeed}}</text>
+        <text class="summary-unit">km/h</text>
+      </view>
+      <view class="summary-card highlight">
+        <text class="summary-label">最高</text>
+        <text class="summary-value">{{maxSpeed}}</text>
+        <text class="summary-unit">km/h</text>
+      </view>
+      <view class="summary-card">
+        <text class="summary-label">平均</text>
+        <text class="summary-value">{{avgSpeed}}</text>
+        <text class="summary-unit">km/h</text>
+      </view>
+    </view>
+
+    <!-- 图表 -->
+    <view class="chart-section card">
+      <text class="section-title">速度趋势（最近{{records.length}}次）</text>
+      <canvas type="2d" id="trendChart" class="trend-chart"></canvas>
+      <view class="legend-row">
+        <view class="legend-item">
+          <view class="legend-dot" style="background:#667eea"></view>
+          <text>棒速</text>
+        </view>
+        <view class="legend-item" wx:if="{{hasLeftRight}}">
+          <view class="legend-dot" style="background:#42b8dd"></view>
+          <text>左手</text>
+        </view>
+        <view class="legend-item" wx:if="{{hasLeftRight}}">
+          <view class="legend-dot" style="background:#f56c6c"></view>
+          <text>右手</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 数据列表 -->
+    <view class="data-section card">
+      <text class="section-title">详细数据</text>
+      <view class="data-row data-header">
+        <text class="data-col date-col">日期</text>
+        <text class="data-col speed-col">棒速</text>
+        <text class="data-col speed-col" wx:if="{{hasLeftRight}}">左手</text>
+        <text class="data-col speed-col" wx:if="{{hasLeftRight}}">右手</text>
+      </view>
+      <view class="data-row" wx:for="{{records}}" wx:key="recordId">
+        <text class="data-col date-col">{{item.dateText}}</text>
+        <text class="data-col speed-col bat">{{item.batSpeedText}}</text>
+        <text class="data-col speed-col" wx:if="{{hasLeftRight}}">{{item.leftSpeedText}}</text>
+        <text class="data-col speed-col" wx:if="{{hasLeftRight}}">{{item.rightSpeedText}}</text>
+      </view>
+    </view>
+  </block>
+</view>

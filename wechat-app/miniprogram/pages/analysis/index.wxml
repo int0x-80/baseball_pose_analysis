@@ -1,0 +1,114 @@
+<view class="analysis-container">
+  <!-- 加载中 -->
+  <view class="loading-state" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 无数据 -->
+  <view class="empty-state" wx:elif="{{!result}}">
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">暂无分析数据</text>
+  </view>
+
+  <!-- 分析结果 -->
+  <block wx:else>
+    <!-- 基本信息 -->
+    <view class="info-card card">
+      <view class="info-header">
+        <text class="action-type">{{result.actionType === 'batting' ? '🏏 击球分析' : '⚾ 投球分析'}}</text>
+        <text class="status-tag status-{{result.status}}">{{statusText}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">记录ID</text>
+        <text class="info-value">{{result.recordId}}</text>
+      </view>
+      <view class="info-row" wx:if="{{result.videoWidth}}">
+        <text class="info-label">视频信息</text>
+        <text class="info-value">{{result.videoWidth}}x{{result.videoHeight}}, {{result.fps}}fps</text>
+      </view>
+    </view>
+
+    <!-- 分析中 -->
+    <view class="status-card card" wx:if="{{result.status === 0}}">
+      <text class="status-emoji">⏳</text>
+      <text class="status-text-main">分析中，请稍候...</text>
+      <text class="status-text-sub">预计需要 1-3 分钟</text>
+    </view>
+
+    <!-- 失败 -->
+    <view class="status-card card error" wx:if="{{result.status === 2}}">
+      <text class="status-emoji">❌</text>
+      <text class="status-text-main">分析失败</text>
+      <text class="status-text-sub">{{result.errorMessage || '未知错误'}}</text>
+    </view>
+
+    <!-- 速度数据 -->
+    <block wx:if="{{result.status === 1}}">
+      <!-- 手臂速度 -->
+      <view class="data-card card">
+        <text class="card-title">手臂速度</text>
+        <view class="data-grid cols-2">
+          <view class="data-cell">
+            <text class="data-lbl">左手</text>
+            <text class="data-val">{{result.leftSpeedMs}} <small>m/s</small></text>
+            <text class="data-sub">{{result.leftSpeedKmH}} km/h</text>
+          </view>
+          <view class="data-cell">
+            <text class="data-lbl">右手</text>
+            <text class="data-val">{{result.rightSpeedMs}} <small>m/s</small></text>
+            <text class="data-sub">{{result.rightSpeedKmH}} km/h</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 挥棒速度 -->
+      <view class="data-card card" wx:if="{{result.maxBatSpeedKmH}}">
+        <text class="card-title">挥棒速度</text>
+        <view class="data-grid cols-2">
+          <view class="data-cell">
+            <text class="data-lbl">最大速度</text>
+            <text class="data-val">{{result.maxBatSpeedKmH}} <small>km/h</small></text>
+          </view>
+          <view class="data-cell">
+            <text class="data-lbl">平均速度</text>
+            <text class="data-val">{{result.avgBatSpeedKmH}} <small>km/h</small></text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 动作数据 -->
+      <view class="data-card card">
+        <text class="card-title">动作数据</text>
+        <view class="data-grid cols-3">
+          <view class="data-cell">
+            <text class="data-lbl">最大转胯</text>
+            <text class="data-val">{{result.maxHipRotationMm}} <small>mm</small></text>
+          </view>
+          <view class="data-cell">
+            <text class="data-lbl">最大扭转</text>
+            <text class="data-val">{{result.maxTwistAngleDeg}}<small>°</small></text>
+          </view>
+          <view class="data-cell">
+            <text class="data-lbl">肩髋差</text>
+            <text class="data-val">{{result.shoulderHipDiffDeg}}<small>°</small></text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 骨骼视频 -->
+      <view class="video-card card" wx:if="{{result.skeletonVideoName}}">
+        <text class="card-title">骨骼视频</text>
+        <video
+          wx:if="{{videoUrl}}"
+          src="{{videoUrl}}"
+          controls
+          class="skeleton-video"
+          show-center-play-btn
+        />
+        <view wx:else class="btn-primary load-video-btn" bindtap="loadVideo">
+          <text>{{loadingVideo ? '加载中...' : '加载视频'}}</text>
+        </view>
+      </view>
+    </block>
+  </block>
+</view>

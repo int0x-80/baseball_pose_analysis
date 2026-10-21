@@ -1,0 +1,70 @@
+<view class="calendar-page">
+  <!-- 月份切换 -->
+  <view class="month-nav">
+    <view class="month-btn" bindtap="prevMonth">
+      <text class="arrow">‹</text>
+    </view>
+    <text class="month-label">{{currentYear}}年{{currentMonth}}月</text>
+    <view class="month-btn" bindtap="nextMonth">
+      <text class="arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 星期标题 -->
+  <view class="weekdays">
+    <text class="weekday" wx:for="{{weekdays}}" wx:key="*this">{{item}}</text>
+  </view>
+
+  <!-- 日历网格 -->
+  <view class="calendar-grid">
+    <view
+      wx:for="{{calendarDays}}"
+      wx:key="index"
+      class="day-cell {{!item.currentMonth ? 'other-month' : ''}} {{item.isToday ? 'today' : ''}} {{item.recordCount === 1 ? 'records-1' : ''}} {{item.recordCount === 2 ? 'records-2' : ''}} {{item.recordCount === 3 ? 'records-3' : ''}} {{item.recordCount > 3 ? 'records-many' : ''}} {{item.date === selectedDate ? 'selected' : ''}}"
+      bindtap="selectDate"
+      data-date="{{item.date}}"
+      data-current="{{item.currentMonth}}"
+    >
+      <text class="day-num">{{item.day}}</text>
+      <view wx:if="{{item.recordCount > 0 && item.currentMonth}}" class="dot-row">
+        <view class="dot"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 图例 -->
+  <view class="legend">
+    <text class="legend-title">训练频率</text>
+    <view class="legend-items">
+      <view class="legend-item">
+        <view class="legend-box" style="background:#dff5d7"></view>
+        <text>1次</text>
+      </view>
+      <view class="legend-item">
+        <view class="legend-box" style="background:#a3d98e"></view>
+        <text>2次</text>
+      </view>
+      <view class="legend-item">
+        <view class="legend-box" style="background:#66bb6a"></view>
+        <text>3次</text>
+      </view>
+      <view class="legend-item">
+        <view class="legend-box" style="background:#2e7d32"></view>
+        <text>4+次</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 当日有记录时展示快捷入口 -->
+  <view class="selected-info" wx:if="{{selectedDate}}">
+    <text class="selected-label">{{selectedDate}} 的训练</text>
+    <view class="btn-outline" style="height:64rpx;line-height:64rpx;font-size:26rpx;" bindtap="viewDayRecords">
+      <text>查看记录 →</text>
+    </view>
+  </view>
+
+  <!-- 加载遮罩 -->
+  <view class="loading-mask" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+</view>

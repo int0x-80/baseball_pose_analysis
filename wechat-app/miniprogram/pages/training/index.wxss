@@ -1,0 +1,204 @@
+.training-container {
+  min-height: 100vh;
+  background: #f5f7fa;
+  padding-bottom: 30rpx;
+}
+
+.stats-cards {
+  display: flex;
+  gap: 16rpx;
+  padding: 24rpx 24rpx 0;
+}
+
+.stat-card {
+  flex: 1;
+  background: white;
+  border-radius: 16rpx;
+  padding: 20rpx 16rpx;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.stat-icon {
+  font-size: 40rpx;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.stat-label {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 2rpx;
+}
+
+/* 上传区域 */
+.upload-section {
+  margin: 24rpx;
+  padding: 28rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.action-type-row {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.action-btn {
+  flex: 1;
+  height: 72rpx;
+  line-height: 72rpx;
+  text-align: center;
+  border: 2rpx solid #e8e8e8;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.action-btn.active {
+  border-color: #667eea;
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.08);
+  font-weight: 500;
+}
+
+.upload-area {
+  border: 2rpx dashed #d0d0d0;
+  border-radius: 12rpx;
+  padding: 32rpx;
+  margin-bottom: 20rpx;
+  background: #fafafa;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.upload-icon {
+  font-size: 48rpx;
+}
+
+.upload-text {
+  font-size: 28rpx;
+  color: #667eea;
+  font-weight: 500;
+}
+
+.upload-hint {
+  font-size: 22rpx;
+  color: #bbb;
+}
+
+.video-preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.video-name {
+  font-size: 26rpx;
+  color: #333;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.video-remove {
+  font-size: 24rpx;
+  color: #f56c6c;
+  margin-left: 16rpx;
+}
+
+.upload-btn {
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+}
+
+.upload-btn.disabled {
+  opacity: 0.5;
+}
+
+/* 分析记录 */
+.results-section {
+  margin: 0 24rpx;
+  background: white;
+  border-radius: 16rpx;
+  padding: 28rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.results-section .section-title {
+  margin-bottom: 16rpx;
+}
+
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.result-card {
+  background: #f9f9fb;
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.result-type {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.result-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.result-speed {
+  font-size: 24rpx;
+  color: #667eea;
+  font-weight: 500;
+}
+
+.load-more {
+  text-align: center;
+  padding: 20rpx 0 4rpx;
+  font-size: 24rpx;
+  color: #999;
+}

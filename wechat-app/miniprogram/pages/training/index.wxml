@@ -1,0 +1,91 @@
+<view class="training-container">
+  <!-- 统计卡片 -->
+  <view class="stats-cards">
+    <view class="stat-card">
+      <text class="stat-icon">🎯</text>
+      <view class="stat-info">
+        <text class="stat-value">{{stats.totalAnalysis}}</text>
+        <text class="stat-label">分析次数</text>
+      </view>
+    </view>
+    <view class="stat-card">
+      <text class="stat-icon">⭐</text>
+      <view class="stat-info">
+        <text class="stat-value">{{stats.points}}</text>
+        <text class="stat-label">积分</text>
+      </view>
+    </view>
+    <view class="stat-card">
+      <text class="stat-icon">👑</text>
+      <view class="stat-info">
+        <text class="stat-value">VIP{{stats.vipLevel}}</text>
+        <text class="stat-label">会员等级</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 视频上传区域 -->
+  <view class="upload-section card">
+    <text class="section-title">上传视频分析</text>
+
+    <view class="action-type-row">
+      <view class="action-btn {{actionType === 'batting' ? 'active' : ''}}" bindtap="selectAction" data-type="batting">
+        <text>🏏 击球</text>
+      </view>
+      <view class="action-btn {{actionType === 'pitching' ? 'active' : ''}}" bindtap="selectAction" data-type="pitching">
+        <text>⚾ 投球</text>
+      </view>
+    </view>
+
+    <view class="upload-area" bindtap="chooseVideo">
+      <view wx:if="{{!videoPath}}" class="upload-placeholder">
+        <text class="upload-icon">📹</text>
+        <text class="upload-text">点击选择视频</text>
+        <text class="upload-hint">支持 mp4/mov 格式</text>
+      </view>
+      <view wx:else class="video-preview">
+        <text class="video-name">{{videoName}}</text>
+        <text class="video-remove" bindtap="removeVideo">✕ 移除</text>
+      </view>
+    </view>
+
+    <view class="btn-primary upload-btn {{(!videoPath || uploading) ? 'disabled' : ''}}" bindtap="submitUpload">
+      <text>{{uploading ? '上传分析中...' : '开始分析'}}</text>
+    </view>
+  </view>
+
+  <!-- 分析记录列表 -->
+  <view class="results-section" wx:if="{{analysisList.length > 0}}">
+    <text class="section-title">分析记录</text>
+    <view class="results-list">
+      <view
+        wx:for="{{analysisList}}"
+        wx:key="recordId"
+        class="result-card"
+        bindtap="viewAnalysis"
+        data-id="{{item.recordId}}"
+      >
+        <view class="result-header">
+          <text class="result-type">{{item.type === 'batting' ? '🏏 击球' : '⚾ 投球'}}</text>
+          <text class="status-tag status-{{item.status}}">{{item.statusText}}</text>
+        </view>
+        <view class="result-footer">
+          <text class="result-time">{{item.timeText}}</text>
+          <text wx:if="{{item.maxBatSpeedKmH}}" class="result-speed">{{item.maxBatSpeedKmH}} km/h</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 加载更多 -->
+    <view class="load-more" wx:if="{{hasMore}}" bindtap="loadMore">
+      <text>{{loadingMore ? '加载中...' : '加载更多'}}</text>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && analysisList.length === 0}}">
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">暂无分析记录</text>
+    <text class="empty-hint">上传视频开始你的第一次分析</text>
+  </view>
+</view>

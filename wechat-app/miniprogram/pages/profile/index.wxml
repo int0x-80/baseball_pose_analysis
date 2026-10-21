@@ -1,0 +1,100 @@
+<view class="profile-container">
+  <!-- 顶部个人信息 -->
+  <view class="profile-header">
+    <view class="avatar-area">
+      <image wx:if="{{userInfo.avatarUrl}}" class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill" />
+      <view wx:else class="avatar avatar-default">
+        <text>{{userInfo.nickname ? userInfo.nickname[0] : 'U'}}</text>
+      </view>
+      <view class="user-meta">
+        <text class="nickname">{{userInfo.nickname || '未设置昵称'}}</text>
+        <text class="user-id">ID: {{userInfo.userId || '--'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 统计 -->
+  <view class="stats-row">
+    <view class="stat-item">
+      <text class="stat-val">{{stats.totalAnalysis}}</text>
+      <text class="stat-lbl">分析次数</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-val">{{stats.points}}</text>
+      <text class="stat-lbl">积分</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-val">VIP{{stats.vipLevel}}</text>
+      <text class="stat-lbl">会员等级</text>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-section card">
+    <view class="menu-item" bindtap="editProfile">
+      <text class="menu-icon">👤</text>
+      <text class="menu-text">编辑资料</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="showPointsLog">
+      <text class="menu-icon">📋</text>
+      <text class="menu-text">积分记录</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="showAbout">
+      <text class="menu-icon">ℹ️</text>
+      <text class="menu-text">关于</text>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-btn btn-outline" bindtap="logout">
+    <text>退出登录</text>
+  </view>
+
+  <!-- 编辑资料弹窗 -->
+  <view class="modal-mask" wx:if="{{showEditModal}}" bindtap="closeEditModal">
+    <view class="modal-content" catchtap="">
+      <text class="modal-title">编辑资料</text>
+      <view class="form-group">
+        <text class="form-label">昵称</text>
+        <input class="form-input" value="{{editForm.nickname}}" bindinput="onEditNickname" maxlength="20" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">性别</text>
+        <view class="gender-row">
+          <view class="gender-item {{editForm.gender === 0 ? 'active' : ''}}" bindtap="onEditGender" data-value="0">未知</view>
+          <view class="gender-item {{editForm.gender === 1 ? 'active' : ''}}" bindtap="onEditGender" data-value="1">男</view>
+          <view class="gender-item {{editForm.gender === 2 ? 'active' : ''}}" bindtap="onEditGender" data-value="2">女</view>
+        </view>
+      </view>
+      <view class="modal-actions">
+        <view class="btn-outline modal-btn" bindtap="closeEditModal"><text>取消</text></view>
+        <view class="btn-primary modal-btn" bindtap="saveProfile"><text>{{saving ? '保存中...' : '保存'}}</text></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 积分记录弹窗 -->
+  <view class="modal-mask" wx:if="{{showPointsModal}}" bindtap="closePointsModal">
+    <view class="modal-content points-modal" catchtap="">
+      <text class="modal-title">积分记录</text>
+      <view class="points-list" wx:if="{{pointsLog.length > 0}}">
+        <view class="points-item" wx:for="{{pointsLog}}" wx:key="id">
+          <view class="points-info">
+            <text class="points-desc">{{item.description}}</text>
+            <text class="points-time">{{item.timeText}}</text>
+          </view>
+          <text class="points-amount {{item.amount > 0 ? 'positive' : 'negative'}}">{{item.amount > 0 ? '+' : ''}}{{item.amount}}</text>
+        </view>
+      </view>
+      <view class="empty-state" wx:else>
+        <text class="empty-text">暂无积分记录</text>
+      </view>
+      <view class="modal-actions">
+        <view class="btn-primary modal-btn" bindtap="closePointsModal"><text>关闭</text></view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,44 @@
+# ========================================
+# MediaPose 统一配置文件
+# ========================================
+
+server:
+  app_name: "MediaPose"
+  app_version: "1.0.0"
+  host: "0.0.0.0"
+  port: 8009
+
+nacos:
+  server_addr: "82.157.140.50:8848"
+  namespace: ""
+  group: "DEFAULT_GROUP"
+  username: ""
+  password: ""
+  service_name: "baseball-pose-analyst"
+  storage_service_name: "storage-service"
+  service_ip: "82.157.140.50"
+
+storage:
+  fallback_url: "http://localhost:8004"
+
+rabbitmq:
+  url: "amqp://admin:admin@localhost:5672/"
+  exchange: "analysis-exchange"
+  request_queue: "analysis-request"
+  completed_queue: "analysis-completed"
+  failed_queue: "analysis-failed"
+  routing_key_request: "request"
+  routing_key_completed: "completed"
+  routing_key_failed: "failed"
+
+mediapipe:
+  model_complexity: 1
+  min_detection_confidence: 0.5
+  min_tracking_confidence: 0.5
+  static_image_mode: false
+
+analysis:
+  fps: 30
+  smoothing_window: 5
+  swing_threshold: 0.3
+  twist_threshold: 15.0

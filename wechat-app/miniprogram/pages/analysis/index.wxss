@@ -1,0 +1,154 @@
+.analysis-container {
+  min-height: 100vh;
+  background: #f5f7fa;
+  padding: 24rpx;
+  padding-bottom: 60rpx;
+}
+
+.info-card {
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.action-type {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.info-value {
+  font-size: 26rpx;
+  color: #333;
+}
+
+/* 状态卡片 */
+.status-card {
+  text-align: center;
+  padding: 60rpx 32rpx;
+  margin-bottom: 20rpx;
+}
+
+.status-card.error {
+  background: #fff8f8;
+}
+
+.status-emoji {
+  font-size: 64rpx;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.status-text-main {
+  font-size: 30rpx;
+  color: #333;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.status-text-sub {
+  font-size: 24rpx;
+  color: #999;
+  display: block;
+}
+
+/* 数据卡片 */
+.data-card {
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.card-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.data-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.data-grid.cols-2 .data-cell {
+  flex: 1;
+  min-width: calc(50% - 8rpx);
+}
+
+.data-grid.cols-3 .data-cell {
+  flex: 1;
+  min-width: calc(33.3% - 12rpx);
+}
+
+.data-cell {
+  background: #f9f9fb;
+  border-radius: 12rpx;
+  padding: 20rpx 16rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.data-lbl {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.data-val {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.data-val small {
+  font-size: 20rpx;
+  font-weight: normal;
+  color: #999;
+}
+
+.data-sub {
+  font-size: 22rpx;
+  color: #999;
+}
+
+/* 视频 */
+.video-card {
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.skeleton-video {
+  width: 100%;
+  border-radius: 12rpx;
+}
+
+.load-video-btn {
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+}

@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/training/index",
+    "pages/trend/index",
+    "pages/profile/index",
+    "pages/login/index",
+    "pages/register/index",
+    "pages/analysis/index",
+    "pages/calendar/index",
+    "pages/daily-records/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#667eea",
+    "navigationBarTitleText": "棒球动作分析",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f7fa",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#667eea",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/training/index",
+        "text": "训练",
+        "iconPath": "images/icons/tab_training.png",
+        "selectedIconPath": "images/icons/tab_training_active.png"
+      },
+      {
+        "pagePath": "pages/calendar/index",
+        "text": "日历",
+        "iconPath": "images/icons/tab_calendar.png",
+        "selectedIconPath": "images/icons/tab_calendar_active.png"
+      },
+      {
+        "pagePath": "pages/trend/index",
+        "text": "趋势",
+        "iconPath": "images/icons/tab_trend.png",
+        "selectedIconPath": "images/icons/tab_trend_active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "images/icons/tab_profile.png",
+        "selectedIconPath": "images/icons/tab_profile_active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

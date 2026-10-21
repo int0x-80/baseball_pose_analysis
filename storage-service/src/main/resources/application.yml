@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: storage-service
+
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: prod
+
+

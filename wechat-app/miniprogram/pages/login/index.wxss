@@ -1,0 +1,87 @@
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 0 40rpx;
+}
+
+.login-header {
+  text-align: center;
+  padding: 120rpx 0 60rpx;
+  color: #fff;
+}
+
+.login-header .title {
+  display: block;
+  font-size: 52rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.login-header .subtitle {
+  display: block;
+  font-size: 28rpx;
+  opacity: 0.85;
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 48rpx 36rpx;
+  box-shadow: 0 16rpx 48rpx rgba(0,0,0,0.1);
+}
+
+.code-row {
+  display: flex;
+  gap: 16rpx;
+}
+
+.code-input {
+  flex: 1;
+}
+
+.code-btn {
+  flex-shrink: 0;
+  width: 220rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  text-align: center;
+  font-size: 24rpx;
+  background: #f5f7fa;
+  color: #667eea;
+  border: 2rpx solid #667eea;
+  border-radius: 12rpx;
+  padding: 0;
+}
+
+.code-btn[disabled] {
+  opacity: 0.5;
+  color: #999;
+  border-color: #ddd;
+}
+
+.btn-wechat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20rpx;
+  background: #07C160;
+  color: #fff;
+  border: none;
+  border-radius: 16rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 32rpx;
+}
+
+.link-row {
+  text-align: center;
+  margin-top: 32rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.link {
+  color: #667eea;
+  font-weight: 500;
+}
